@@ -1,0 +1,59 @@
+{
+  "domains": [
+    {
+      "projects": [
+        {
+          "UID": "8bcbad4c-e16f-49f6-9f24-62019e3cfb80",
+          "name": "QC"
+        },
+        {
+          "UID": "0dc9fdb3-3544-4ab7-aa24-e12ab3c0bf7b",
+          "name": "Center_Admin"
+        }
+      ],
+      "name": "MERCURY"
+    }
+  ],
+  "modules": [
+    {
+      "name": "Releases",
+      "Id": 7
+    },
+    {
+      "name": "Defects",
+      "Id": 0
+    },
+    {
+      "name": "Test Plan",
+      "Id": 1
+    },
+    {
+      "name": "Test Lab",
+      "Id": 2
+    },
+    {
+      "name": "Requirements",
+      "Id": 3
+    },
+    {
+      "name": "Dashboard",
+      "Id": 5
+    },
+    {
+      "name": "Components",
+      "Id": 6
+    },
+    {
+      "name": "Libraries",
+      "Id": 11
+    },
+    {
+      "name": "Models",
+      "Id": 10
+    },
+    {
+      "name": "Environments",
+      "Id": 12
+    }
+  ]
+}
