@@ -45,7 +45,8 @@ public class WebhooksService {
 
     @PermitAll
     @Transactional
-    public Webhook createWebhook(Webhook webhook) {
+    public Webhook createWebhook(String domain, String project, String module, String url) {
+        Webhook webhook = new Webhook(url, domain, project, module);
         return webhooksRepository.save(webhook);
     }
 

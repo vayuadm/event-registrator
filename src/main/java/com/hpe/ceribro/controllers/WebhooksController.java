@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -29,11 +28,11 @@ public class WebhooksController {
     @Autowired
     private WebhooksService webhooksService;
 
-    @GetMapping(value = "/{domain}/{project}/{entity}")
+    @GetMapping(value = "/{domain}/{project}/{module}")
     public List<Webhook> getWebhooks(@PathVariable String domain,
                                      @PathVariable String project,
-                                     @PathVariable String entity) throws IOException {
-        return webhooksService.readWebhooks(domain, project, entity);
+                                     @PathVariable String module) throws IOException {
+        return webhooksService.readWebhooks(domain, project, module);
     }
 
     @GetMapping(value = "/{domain}/{project}")
@@ -52,9 +51,12 @@ public class WebhooksController {
         return webhooksService.readWebhooks();
     }
 
-    @PostMapping
-    public Webhook createWebhook(@RequestBody @Valid Webhook webhook) {
-        return webhooksService.createWebhook(webhook);
+    @PostMapping(value = "/{domain}/{project}/{module}")
+    public Webhook createWebhook(@PathVariable String domain,
+                                 @PathVariable String project,
+                                 @PathVariable String module,
+                                 @RequestBody String url) throws IOException {
+        return webhooksService.createWebhook(domain, project, module, url);
     }
 
     @DeleteMapping(value = "/{webhookId}")
