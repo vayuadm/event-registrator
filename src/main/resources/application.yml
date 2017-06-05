@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./build/db/h2;AUTO_SERVER=TRUE
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
