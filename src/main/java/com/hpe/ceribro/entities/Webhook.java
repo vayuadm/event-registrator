@@ -6,7 +6,10 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -37,5 +40,8 @@ public class Webhook implements Serializable {
     @NotBlank
     private String module;
 
-
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category_type")
+    @NonNull
+    private CategoryType categoryType;
 }

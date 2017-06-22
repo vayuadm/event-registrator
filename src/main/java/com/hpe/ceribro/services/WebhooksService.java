@@ -1,5 +1,6 @@
 package com.hpe.ceribro.services;
 
+import com.hpe.ceribro.entities.CategoryType;
 import com.hpe.ceribro.entities.Webhook;
 import com.hpe.ceribro.repositories.WebhooksRepository;
 import org.slf4j.Logger;
@@ -10,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.security.PermitAll;
 import java.util.List;
+
+import static com.hpe.ceribro.entities.CategoryType.*;
 
 @Service
 public class WebhooksService {
@@ -45,8 +48,8 @@ public class WebhooksService {
 
     @PermitAll
     @Transactional
-    public Webhook createWebhook(String domain, String project, String module, String url) {
-        Webhook webhook = new Webhook(url, domain, project, module);
+    public Webhook createWebhook(String domain, String project, String module, String url, CategoryType categoryType) {
+        Webhook webhook = new Webhook(url, domain, project, module, categoryType == null ? DEFAULT : categoryType);
         return webhooksRepository.save(webhook);
     }
 

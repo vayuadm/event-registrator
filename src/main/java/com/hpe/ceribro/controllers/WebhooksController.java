@@ -1,5 +1,7 @@
 package com.hpe.ceribro.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hpe.ceribro.controllers.resources.RegistrationData;
 import com.hpe.ceribro.entities.Webhook;
 import com.hpe.ceribro.services.WebhooksService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +57,10 @@ public class WebhooksController {
     public Webhook createWebhook(@PathVariable String domain,
                                  @PathVariable String project,
                                  @PathVariable String module,
-                                 @RequestBody String url) throws IOException {
-        return webhooksService.createWebhook(domain, project, module, url);
+                                 @RequestBody String registrationDataString) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        RegistrationData registrationData = mapper.readValue(registrationDataString, RegistrationData.class);
+        return webhooksService.createWebhook(domain, project, module, registrationData.getUrl(), registrationData.getCategoryType());
     }
 
     @DeleteMapping(value = "/{webhookId}")
